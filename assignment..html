@@ -86,21 +86,20 @@ const students = [
   { id: 20, name: "Ravana", marks: 51, department: "MECH" }
 ];
 
-/* 1. Display all student names */
 students.forEach(s => {
   const li = document.createElement("li");
   li.textContent = s.name;
   document.getElementById("allStudents").appendChild(li);
 });
 
-/* 2. Students scoring more than 60 */
+
 students.filter(s => s.marks > 60).forEach(s => {
   const li = document.createElement("li");
   li.textContent = `${s.name} (${s.marks})`;
   document.getElementById("above60").appendChild(li);
 });
 
-/* 3. Count students in each department */
+
 const deptObj = students.reduce((acc, s) => {
   acc[s.department] = (acc[s.department] || 0) + 1;
   return acc;
@@ -112,12 +111,12 @@ for (let dept in deptObj) {
   document.getElementById("deptCount").appendChild(li);
 }
 
-/* 4. Student with highest marks */
+
 const highest = students.reduce((max, s) => s.marks > max.marks ? s : max);
 document.getElementById("topper").textContent =
   `${highest.name} (${highest.marks})`;
 
-/* 5. Display students in table */
+
 students.forEach(s => {
   const row = document.getElementById("studentTable").insertRow();
   row.insertCell(0).textContent = s.name;
@@ -129,20 +128,18 @@ students.forEach(s => {
   }
 });
 
-/* 6. Average marks */
 const avg =
   students.reduce((sum, s) => sum + s.marks, 0) / students.length;
 document.getElementById("average").textContent =
   avg.toFixed(2);
 
-/* 7. Display only CSE students */
+
 students.filter(s => s.department === "CSE").forEach(s => {
   const li = document.createElement("li");
   li.textContent = s.name;
   document.getElementById("cseList").appendChild(li);
 });
 
-/* 8. Sort students by marks descending */
 const sorted = [...students].sort((a, b) => b.marks - a.marks);
 sorted.forEach(s => {
   const row = document.getElementById("sortedTable").insertRow();
@@ -155,16 +152,8 @@ sorted.forEach(s => {
   }
 });
 
-/* 9. Add new student and update list */
-const newStudent = { id: 21, name: "Ramesh", marks: 76, department: "CSE" };
-students.push(newStudent);
-
-students.forEach(s => {
-  const li = document.createElement("li");
-  li.textContent = `${s.name} - ${s.marks}`;
-  document.getElementById("updatedList").appendChild(li);
-});
 </script>
 
 </body>
 </html>
+
